@@ -96,12 +96,14 @@ public class EM {
             }
             //Calculate the mean for each cluster component
             for (int k = 0; k < CLUSTER; k++) {
+                miu[k] = 0;
                 for (int n = 0; n < size; n++) miu[k] += rsp[n][k] * X[n];
                 miu[k] /= N[k];
             }
             //Calculate the covariance for each cluster component
             if (!fixVar) {
                 for (int k = 0; k < CLUSTER; k++) {
+                    sigma[k] = 0;
                     for (int n = 0; n < size; n++) {
                         double diff = X[n] - miu[k];
                         sigma[k] += rsp[n][k] * diff * diff;
